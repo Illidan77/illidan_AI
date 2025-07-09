@@ -710,7 +710,9 @@ max-width: 420px;
   font-size: 1.05rem;
   text-decoration: none;
   color: #0c0c0d;
-
+  min-width: 250px;
+  text-align: center;
+  box-sizing: border-box;
   background: linear-gradient(90deg, var(--c1, #08fdd8), var(--c2, #5b5cf3));
   background-size: 200% 100%;
   background-position: 0% 50%;
@@ -774,6 +776,13 @@ max-width: 420px;
 @media (max-width: 295px){
   .hero-title{
             font-size: 2rem;
+  }
+}
+    @media (max-width: 420px) {
+  .btn-assist {
+    font-size: 0.9rem;
+    padding: 0.55rem 1.2rem;
+    min-width: 220px;
   }
 }
     
