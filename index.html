@@ -1,0 +1,2076 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ILlidan AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  max-width: 100vw;
+}
+    body{font-family:'Inter',sans-serif;background:#0c0c0d;color:#f2f2f2;}
+    section{padding:4rem 2rem;max-width:1000px;margin:auto;}
+    .hero{text-align:center;padding-top:6rem;}
+    .hero h1{font-size:3.5rem;font-weight:800;background:linear-gradient(90deg,#d16ba5 0%,#c777b9 25%,#a855f7 50%,#5b5cf3 75%,#d16ba5 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 100%;animation:titleAnim 8s ease-in-out infinite alternate;}
+    .hero p{max-width:600px;margin:1.5rem auto;font-size:1.2rem;color:#aaa;}
+    .hero a{display:inline-block;padding:1rem 2rem;border-radius:50px;background:linear-gradient(90deg,var(--c1,#08fdd8),var(--c2,#5b5cf3));color:#0c0c0d;text-decoration:none;font-weight:600;transition:transform .3s ease;}
+    .hero a:hover{transform:scale(1.05);}
+
+    .services h2{text-align:center;font-size:2rem;margin-bottom:2rem;}
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2rem;}
+    .card{background:#161617;border-radius:16px;padding:2rem;transition:transform .7s ease,background .7s ease,box-shadow .7s ease;cursor:pointer;}
+    .card h3{word-break:break-word;}
+    .card p.more{opacity:0;max-height:0;overflow:hidden;transition:opacity .4s,max-height .4s;color:#bbb;margin-top:1rem;}
+    .card:hover{transform:scale(1.05);background:#292930;box-shadow:0 0 40px rgba(91,92,243,0.25);}
+    .card:hover p.more{opacity:1;max-height:200px;}
+
+    .portfolio h2{text-align:center;font-size:2rem;margin-bottom:3rem;}
+    .portfolio-item{display:flex;flex-direction:column;gap:2rem;margin-bottom:4rem;}
+    .portfolio-content{display:flex;flex-direction:column;gap:2rem;}
+    .portfolio-content.reverse{flex-direction:column-reverse;}
+    .portfolio-text{max-width:600px;margin:auto;}
+    .portfolio-text h3{font-size:2rem;margin-bottom:1rem;}
+    .portfolio-text p{margin-bottom:1rem;color:#ccc;line-height:1.5;}
+    .portfolio-images{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+    .portfolio-images img{width:calc(50% - 1rem);border-radius:8px;object-fit:cover;}
+    @media(min-width:800px){.portfolio-item{flex-direction:row;align-items:center;}.portfolio-content.reverse{flex-direction:row-reverse;}.portfolio-text,.portfolio-images{flex:1;}}
+
+    .testimonials{border-radius:12px;background:linear-gradient(-45deg,#000,#111,#000,#111);background-size:400% 400%;animation:gradientBG 15s ease infinite;padding:4rem 2rem;position:relative;overflow:hidden;}
+    .testimonials h2{text-align:center;font-size:2rem;color:#fff;margin-bottom:2rem;position:relative;z-index:1;}
+    .testimonials::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);mask-image:radial-gradient(circle 150px at var(--mouse-x) var(--mouse-y),transparent 0%,black 80%);-webkit-mask-image:radial-gradient(circle 150px at var(--mouse-x) var(--mouse-y),transparent 0%,black 80%);opacity:0;transition:opacity .5s ease;}
+    .testimonials.spotlight::before{opacity:1;}
+    marquee{display:block;white-space:nowrap;overflow:hidden;width:100%;}
+    .testimonial-card{display:inline-block;vertical-align:top;background:rgba(31,31,32,0.85);padding:2rem;margin:0 1rem;border-radius:12px;color:#eee;font-size:1rem;min-width:300px;line-height:1.5;}
+
+    .telegram{background:#161617;border-radius:16px;padding:3rem 2rem;margin-top:2rem;}
+    .tg-gradient{font-size:3.5rem;font-weight:800;text-align:center;margin-bottom:1.5rem;background:linear-gradient(90deg,#d16ba5 0%,#c777b9 25%,#a855f7 50%,#5b5cf3 75%,#d16ba5 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 100%;animation:titleAnim 8s ease-in-out infinite alternate;}
+    .tg-content{$1;padding-left:2rem;}
+    @media(max-width:700px){.tg-content{grid-template-columns:1fr;}}
+    .tg-content h3{font-size:1.2rem;margin-bottom:.7rem;background:linear-gradient(90deg,#5b5cf3,#a855f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700;}
+    .tg-content ul{color:#bbb;line-height:1.7;padding-left:1.2rem;}
+    .tg-center-text{color:#d1c6e3;font-size:1.1rem;text-align:center;margin:2rem 0 .5rem;}
+    .telegram-buttons{text-align:center;margin:2rem 0;}
+    .btn-assist{display:inline-block;padding:1rem 2rem;border-radius:50px;background:linear-gradient(90deg,var(--c1,#08fdd8),var(--c2,#5b5cf3));color:#0c0c0d;text-decoration:none;font-weight:600;transition:transform .3s ease;}
+    .btn-assist:hover{transform:scale(1.05)}
+
+    footer{margin-top:2rem;text-align:center;color:#888;font-size:.9rem;}
+    @keyframes gradientBG{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+    @keyframes titleAnim{0%{background-position:0% 50%;}100%{background-position:100% 50%;}}
+    @keyframes resultAnim {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+
+  }
+  /* /* ───── переключатель языка RU / EN ───── */
+
+/* фиксируем в правом-верхнем углу на всех экранах */
+.lang-switcher {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+  max-width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+@media (max-width: 400px) {
+  .lang-switcher {
+    right: 0.5rem;
+    transform: scale(0.85); /* если нужно ужать */
+  }
+}
+
+
+/* сам чекбокс скрыт */
+#lang-switch{
+  position:absolute;
+  appearance:none;
+  pointer-events:none;
+  opacity:0;
+}
+
+/* видимая «капсула» — ДЕСКТОП (≥ 600 px) */
+.lang-toggle{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  width:120px;          /* 2 × 60 px */
+  height:40px;
+  padding:0 8px;
+  border-radius:9999px;
+  background:#2b2b2e;
+  cursor:pointer;
+  user-select:none;
+  font-weight:700;
+  font-size:.95rem;
+}
+
+/* фоновый слайдер */
+.lang-toggle .slider{
+  position:absolute;
+  top:4px; left:4px;
+  width:52px; height:32px;
+  border-radius:9999px;
+  background:linear-gradient(90deg,#a855f7 0%,#5b5cf3 100%);
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+}
+
+/* подписи RU / EN */
+.lang-toggle .opt{
+  width:60px;                 /* 120 / 2 */
+  text-align:center;
+  line-height:40px;
+  color:#c8c8d0;
+  transition:color .3s;
+}
+
+/* подсветка активного языка */
+#lang-switch:not(:checked)+.lang-toggle .opt-ru,
+#lang-switch:checked       +.lang-toggle .opt-en{
+  color:#fff;
+}
+
+/* переезд слайдера */
+#lang-switch:checked + .lang-toggle .slider{
+  transform:translateX(60px);
+}
+
+/* ───── адаптив: узкие экраны (< 600 px) ───── */
+@media(max-width:600px){
+  .lang-toggle{
+    width:92px;
+    height:32px;
+    font-size:.80rem;
+    padding:0 6px;
+  }
+  .lang-toggle .slider{
+    top:3px; left:3px;
+    width:40px; height:26px;
+  }
+  .lang-toggle .opt{
+    width:46px;
+    line-height:32px;
+  }
+  #lang-switch:checked + .lang-toggle .slider{
+    transform:translateX(46px);
+  }
+}
+
+/* базовый вид */
+body{opacity:1;transition:opacity .55s cubic-bezier(.4,0,.2,1);}
+
+/* исчезновение */
+body.fade-out{opacity:0;pointer-events:none}
+
+/* появление (= убираем fade-out, но на всякий случай) */
+body.fade-in {opacity:1}
+
+/* ───── выразительный header каждого кейса (без hover) ───── */
+.portfolio-header h3{
+  font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:900;
+  letter-spacing:.03em;
+  display:inline-flex;align-items:center;gap:.4rem;
+
+  /* неоновый бегущий градиент */
+  background:linear-gradient(90deg,#ff74e0 0%,#d16ba5 35%,#a855f7 65%,#5b5cf3 100%);
+  background-size:250% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:portfolioGlow 4.5s ease-in-out infinite alternate;
+
+  /* постоянное мягкое свечение */
+  text-shadow:0 0 4px #ff8af244,0 0 12px #a855f766;
+}
+
+/* KPI-бейджи со свечением при наведении (оставляем) */
+.portfolio-header .badge{
+  background:rgba(255,138,242,.12);
+  border:1px solid rgba(255,138,242,.28);
+  transition:transform .3s,box-shadow .3s;
+}
+.portfolio-header .badge:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 12px rgba(255,138,242,.5);
+}
+
+/* keyframes, если ещё не заданы глобально */
+@keyframes portfolioGlow{
+  0%  {background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+
+/* ─────────  SECTION TITLES: Services / Portfolio  ───────── */
+.services h2,
+.portfolio h2{
+  font-size:clamp(2.2rem,6vw,3.6rem); /* крупно, но адаптивно */
+  font-weight:900;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  position:relative;
+  color:#f2f2f2;
+  margin-bottom:2.2rem;               /* чуть больше воздуха */
+  text-shadow:0 2px 8px rgba(0,0,0,.6); /* лёгкая глубина */
+  overflow:hidden;                    /* для ::after */
+}
+
+/* плавная «подсветка-маркер» под текстом */
+.services h2::after,
+.portfolio h2::after{
+  content:'';
+  position:absolute;
+  left:50%;
+  bottom:-10px;                       /* чуть ниже букв */
+  width:0;
+  height:3px;                         /* толщина полосы */
+  background:linear-gradient(90deg,#08fdd8 0%,#5b5cf3 100%);
+  transition:width .6s cubic-bezier(.4,0,.2,1),
+             left  .6s cubic-bezier(.4,0,.2,1);
+}
+
+/* при наведении полоса расширяется слева-направо */
+.services h2:hover::after,
+.portfolio h2:hover::after{
+  width:120%;                         /* немного за пределы */
+  left:-10%;                          /* сдвиг влево, чтобы центр остался */
+}
+
+/* ─────────  ГЛОБАЛЬНО: убираем горизонтальный скролл  ───────── */
+html,body{
+  width:100%;
+  overflow-x:hidden;        /* никакого выезжающего контента */
+}
+
+/* ─────────  СЕКЦИИ: комфортные отступы на мобильных  ───────── */
+@media(max-width:640px){
+  section{
+    padding:3rem 1rem;      /* было 4rem 2rem — делаем компактней */
+  }
+}
+
+/* ─────────  CARDS (Услуги) — центрируем внутри грида  ───────── */
+.cards{
+  justify-items:center;     /* карточки теперь по центру своей ячейки */
+}
+
+/* ─────────  PORTFOLIO: колонки по центру на мобильных  ───────── */
+@media(max-width:800px){
+  .portfolio-item{
+    flex-direction:column !important; /* перестраховка */
+    align-items:center;               /* центр по горизонтали */
+  }
+  .portfolio-content,
+  .portfolio-images{
+    max-width:100%;
+    flex:none;
+  }
+}
+
+/* ─────────  PORTFOLIO IMG на сверх-узком экране  ───────── */
+@media(max-width:500px){
+  .portfolio-images img{
+    width:100%;              /* каждый скрин на всю ширину */
+  }
+}
+
+/* ─────────  GRID-списки «Ключевые шаги» / «Goal»  ───────── */
+@media(max-width:640px){
+  .grid{
+    grid-template-columns:1fr;   /* одна колонка вместо двух */
+  }
+}
+
+/* ───── иконки для Goal / Steps ───── */
+/* общий контейнер заголовка */
+.goal-heading,
+.steps-heading{
+  display:flex;
+  align-items:center;
+  gap:.45rem;
+  font-weight:700;
+}
+
+/* сам текст (градиент и перелив только тут!) */
+.goal-heading .heading-text,
+.steps-heading .heading-text{
+  font-size:clamp(1.15rem,3.2vw,1.35rem);
+  font-weight:800;
+  background:linear-gradient(90deg,#ff74e0 0%,#d16ba5 35%,#a855f7 65%,#5b5cf3 100%);
+  background-size:200% 100%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:portfolioGlow 4.5s ease-in-out infinite alternate;
+}
+
+/* 🎯 пульс */
+.icon-goal{
+  width:22px;height:22px;
+  stroke:#ff8af2;fill:none;stroke-width:2;
+  animation:goalPulse 2s ease-in-out infinite;
+}
+@keyframes goalPulse{
+  0%,100%{transform:scale(1);opacity:1}
+  50%    {transform:scale(1.15);opacity:.75}
+}
+
+/* 👣 шаг */
+.icon-steps{
+  width:28px;height:22px;
+  fill:#a855f7;
+  animation:stepsWalk 1s ease-in-out infinite;
+}
+@keyframes stepsWalk{
+  0%,100%{transform:translateX(0)}
+  50%    {transform:translateX(4px)}
+}
+
+/* уже был выше, оставляем */
+@keyframes portfolioGlow{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+
+/* ─────────  «Результат» — выразительный call-out  ───────── */
+.result-box{
+  position:relative;
+  margin-top:1.7rem;
+  padding:1.4rem 1.6rem 1.3rem;
+  border-radius:14px;
+  background:rgba(255,255,255,.03);              /* лёгкая «карточка» */
+  border:1px solid rgba(91,92,243,.25);
+  box-shadow:0 3px 10px rgba(0,0,0,.18);
+  transition:transform .3s cubic-bezier(.4,0,.2,1),
+             box-shadow .3s cubic-bezier(.4,0,.2,1);
+}
+
+/* мягкое свечение при hover */
+.result-box:hover{
+  transform:translateY(-4px);
+  box-shadow:0 6px 22px rgba(91,92,243,.35);
+}
+
+
+
+.result-box::before {
+  content: "";
+  position: absolute; inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+
+  /* повторяющиеся диагональные полосы + базовый фон */
+  background:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.07) 0,
+      rgba(255,255,255,0.07) 4px,
+      transparent 4px,
+      transparent 14px
+    ),
+    #161617;
+  background-blend-mode: overlay;
+  background-size: auto, 100% 100%;
+
+  /* задаём начальную позицию для обоих слоёв */
+  background-position: 0 0, 0 0;
+  animation: stripeSweep 20s linear infinite;
+}
+
+@keyframes stripeSweep {
+  0%   { background-position:   0  0, 0 0; }
+  100% { background-position:  16px 16px, 0 0; }
+}
+
+
+/* ─── «раскрывающийся» Result-box ─── */
+.result-box{
+  cursor:pointer;                                 /* подсказка, что интерактивно */
+  transition:transform .35s cubic-bezier(.4,0,.2,1),
+             box-shadow .35s cubic-bezier(.4,0,.2,1);
+}
+
+/* скрытый подробный текст */
+.result-more{
+  opacity:0;
+  max-height:0;
+  overflow:hidden;
+  transition:opacity .45s ease,max-height .45s ease;
+  margin-top:.9rem;
+  line-height:1.55;
+  color:#c9c9d4;
+}
+
+/* при наведении/табе раскрываем */
+.result-box:hover,
+.result-box:focus-within{
+  transform:translateY(-4px);
+  box-shadow:0 6px 22px rgba(91,92,243,.35);
+}
+.result-box:hover .result-more,
+.result-box:focus-within .result-more{
+  opacity:1;
+  max-height:400px;                               /* достаточно для 3-4 абз. */
+}
+
+
+
+
+/* основная KPI-строка */
+.result-box .kpi{
+  display:block;
+  font-size:1.25rem;
+  font-weight:800;
+  letter-spacing:.02em;
+  background:linear-gradient(90deg,#08fdd8 0%,#5b5cf3 100%);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:.6rem;
+}
+
+/* подчёркиваем числа внутри KPI-фразы */
+.result-box .kpi strong{
+  font-size:1.35rem;
+}
+
+/* список деталей результата */
+.result-box ul{
+  margin:0;
+  padding-left:1.4rem;
+  list-style:disc;
+  color:#c9c9d4;
+  line-height:1.55;
+}
+.result-box ul li+li{margin-top:.35rem}
+
+/* ─── обёртка для слогана, стрелки и кнопки ─── */
+.tg-arrow-wrap{
+  position:relative;
+  text-align:center;
+}
+
+/* кнопка опускаем немного вниз для «цели» стрелки */
+.tg-arrow-wrap .telegram-buttons{margin-top:2.5rem}
+
+/* ─── SVG-стрелка ─── */
+/* ───────────── tg-arrow-wrap (обёртка) ───────────── */
+.tg-arrow-wrap {
+  position: relative;
+  text-align: center;
+  margin-top: 1.5rem; /* при необходимости отрегулируйте */
+}
+
+/* отступ под слоганом */
+.tg-arrow-wrap .tg-center-text {
+  margin-bottom: 1rem;
+}
+
+/* сдвиг кнопки чуть вниз, чтобы «цель» стрелки была точнее */
+.tg-arrow-wrap .telegram-buttons {
+  margin-top: 2rem;
+}
+.hero-btn {
+  --c1: #08fdd8;   /* мятный */
+  --c2: #5b5cf3;   /* синий/фиолетово-синий */
+}
+/* ============ GLOBAL OVERWRITES ============ */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+  /* только один вертикальный скролл */
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  /* убираем высоту 100%, чтобы внутренние секции нормально растягивались */
+  height: auto !important;
+}
+
+/* убираем все outline из временной отладки */
+* { outline: none !important; }
+
+/* ============ HERO CONTAINER FIX ============ */
+/* ограничиваем область героя */
+.hero-illidan {
+  position: relative !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+}
+
+/* то же для стека заголовков */
+.hero-stack {
+  position: relative !important;
+  display: inline-block !important;
+  max-height: 100vh !important;
+  overflow: hidden !important;
+}
+
+
+/* ============ SMOOTH GRADIENT ANIMATION ============ */
+/* если нужно погладить анимацию ещё сильнее */
+@keyframes gradientLoop {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 50% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+
+html {
+  height: 100%;
+  overflow-x: hidden !important;
+  overflow-y: auto  !important;
+}
+
+body {
+  height: auto;
+  overflow:    hidden !important;
+}
+
+
+  </style>
+</head>
+<body>
+  <!-- переключатель языка -->
+  <header class="lang-switcher">
+    <input type="checkbox" id="lang-switch" aria-label="Switch language">
+    <label for="lang-switch" class="lang-toggle">
+      <span class="slider"></span>
+      <span class="opt opt-ru">RU</span>
+      <span class="opt opt-en">EN</span>
+    </label>
+  </header>
+<section class="hero-illidan">
+  <div class="hero-stack">
+    <h1 class="hero-title">ILLIDAN&nbsp;AI</h1>
+    <h1 class="hero-title reflection r1">ILLIDAN&nbsp;AI</h1>
+    <h1 class="hero-title reflection r2">ILLIDAN&nbsp;AI</h1>
+    <h1 class="hero-title reflection r3">ILLIDAN&nbsp;AI</h1>
+    <h1 class="hero-title reflection r4">ILLIDAN&nbsp;AI</h1>
+  </div>
+
+  <img src="images/hero-robot-front.png" alt="Illidan AI avatar" class="hero-avatar" />
+
+  <div class="hero-footer">
+  <p data-i18n="heroText">
+    Создаю современные решения для бизнеса — ИИ, сайты, автоматизация, Telegram-боты.
+  </p>
+  <a
+  id="assist-top"
+  href="https://t.me/illidan_assistant_bot"
+  target="_blank"
+  class="btn-assist"
+  data-i18n="heroBtn">
+  Запустить Telegram-ассистента
+</a>
+</div>
+
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap');
+
+    .hero-illidan {
+      position: relative;
+      min-height: 100vh;
+      background: #0c0c0d;
+      overflow: hidden;
+    }
+
+.hero-stack {
+  position: relative;
+  width: 100%;                  /* 📌 растягиваем на всю ширину */
+  text-align: center;           /* 📌 центрируем содержимое */
+  transform: translateY(2rem);
+  z-index: 2;
+  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+          mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+  
+
+    .hero-title {
+          top: 30px;
+  display: inline-block;        /* 📌 чтобы градиент не обрезался */
+  font-family: 'Cinzel', serif;
+  font-weight: 700;
+  font-size: clamp(3rem, 10vw, 8rem);
+  line-height: 1;
+  margin: 0;
+  background: linear-gradient(90deg, #ff8af2, #d16ba5, #a855f7);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientMove 12s ease-in-out infinite alternate;
+  text-shadow: 0 0 8px rgba(255,138,242,0.4), 0 0 20px rgba(168,85,247,0.6);
+  position: relative;
+  z-index: 2;
+}
+
+
+    .reflection {
+        display: inline-block;
+  width: auto;                 /* автоширина для отражения */
+  margin: 0 auto;
+      transform: scaleY(-1);
+      opacity: 0.3;
+    }
+
+    .hero-title,
+.hero-title.reflection {
+  animation: gradientLoop 12s linear infinite !important;
+  transition: none !important;
+  --stack-gap: -3rem;
+}
+
+/* Эффект шлейфа, не переворачивая текст */
+.r1 {
+  transform: translateY(calc(var(--stack-gap) * 1));
+  opacity: 0.4 !important;
+  filter: brightness(0.8) !important;
+}
+.r2 {
+  transform: translateY(calc(var(--stack-gap) * 2));
+  opacity: 0.2 !important;
+  filter: brightness(0.6) !important;
+}
+.r3 {
+  transform: translateY(calc(var(--stack-gap) * 3));
+  opacity: 0.15 !important;
+  filter: brightness(0.3) !important;
+}
+.r4 {
+  transform: translateY(calc(var(--stack-gap) * 4));
+  opacity: 0.017 !important;
+  filter: brightness() !important;
+}
+
+
+
+    .hero-avatar {
+position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+    z-index: 3;
+    pointer-events: none;
+    }
+
+    .hero-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;                          /* тянется до краёв body */
+  background: rgba(20, 20, 25, 0.6);
+  backdrop-filter: blur(6px);
+  padding: 2rem 1rem;
+  text-align: center;
+  z-index: 4;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+/* Центрируем содержимое внутри */
+.hero-footer p,
+.hero-footer a {
+max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding: 1.2rem;
+}
+.hero-footer p {
+  padding: 0;
+  color: #bfbfd4;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+    .hero-btn,
+.btn-assist {
+  display: inline-block;
+  padding: 0.5rem 1.1rem;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: #0c0c0d;
+
+  background: linear-gradient(90deg, var(--c1, #08fdd8), var(--c2, #5b5cf3));
+  background-size: 200% 100%;
+  background-position: 0% 50%;
+
+  transition: transform 0.3s ease;
+  --c1: #08fdd8;
+  --c2: #5b5cf3;
+  will-change: transform, background-position;
+}
+
+.hero-btn:hover,
+.btn-assist:hover {
+  transform: scale(1.05);
+}
+/* Специфичный селектор, чтобы не затереть стили базового .btn-assist */
+.btn-assist.btn-assist--small {
+  /* чуть меньший шрифт */
+  font-size: 1rem;        
+  /* уменьшенные отступы */
+  padding: 0.4rem 0.8rem;    /* 6px 12px */
+  /* убираем «минимальную ширину», если она мешает */
+  min-width: auto;
+  /* при необходимости — сузить максимум */
+  max-width: 300px;
+}
+
+
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    @media (max-width: 425px) {
+  .hero-footer p {
+    font-size: 1rem;     /* немного меньше текст */
+    line-height: 1.5;
+  }
+
+  .hero-footer .btn-assist {
+    font-size: 0.8rem;    /* уменьшенный текст кнопки */
+  }
+
+  .hero-avatar {
+    transform: scale(2);         /* увеличить изображение */
+    transform-origin: center;       /* центрируем масштаб */
+    transition: transform 0.3s ease;/* плавно при ресайзе */
+            top: 33%;
+        left: 19%;
+  }
+}
+@media (max-width: 400px){
+  .hero-title{
+            font-size: 2.5rem;
+  }
+}
+@media (max-width: 330px){
+  .hero-title{
+            font-size: 2.2rem;
+  }
+}
+@media (max-width: 295px){
+  .hero-title{
+            font-size: 2rem;
+  }
+}
+    
+  </style>
+</section>
+
+
+
+
+
+
+<!-- 🔥 видос -->
+  <section class="intro-media" data-aos="fade-up">
+  <div style="text-align:center; margin-bottom:2rem;">
+    <video 
+      src="images/mainvid.mp4" 
+      autoplay 
+      muted 
+      loop 
+      playsinline 
+      preload="auto"
+      style="width:100%; max-width:100%; border-radius:8px; display:block; object-fit:cover;"
+    ></video>
+  </div>
+</section>
+  <section class="services" data-aos="fade-up" data-aos-duration="500">
+  <h2 data-i18n="servicesTitle">Услуги</h2>
+
+  <div class="cards">
+    <!-- 1. AI Integration -->
+    <div class="card">
+      <h3 data-i18n="srvAI">Внедрение ИИ</h3>
+      <p data-i18n="srvAIDesc">Чат-боты, автоматизация, нейросети.</p>
+      <p class="more" data-i18n="srvAIHint">
+  Решения: чат-боты, RPA-скрипты, рекомендательные системы.<br>
+  Для отраслей: ритейл, финтех, логистика.<br>
+  Выгода: автоответы 24/7, предиктивная аналитика, снижение издержек.
+</p>
+    </div>
+
+    <!-- 2. Web-dev -->
+    <div class="card">
+      <h3 data-i18n="srvWeb">Веб-разработка</h3>
+      <p data-i18n="srvWebDesc">Лендинги, CRM, UI/UX.</p>
+      <p class="more" data-i18n="srvWebHint">
+  Респонсивные лендинги, SaaS-панели, e-commerce-платформы.<br>
+  Для кого: стартапы, SMB, digital-агентства.<br>
+  Плюсы: Core Web Vitals 95+, интеграция оплаты, рост ROI.
+</p>
+    </div>
+
+    <!-- 3. Administration -->
+    <div class="card">
+      <h3 data-i18n="srvAdmin">Администрирование</h3>
+      <p data-i18n="srvAdminDesc">Хостинг, обслуживание, безопасность.</p>
+      <p class="more" data-i18n="srvAdminHint">
+  DevOps, CI/CD, мониторинг 24/7, обновления без простоев.<br>
+  Для: SaaS, маркетплейсов, EdTech-платформ.<br>
+  Результат: 99.9 % uptime, ежедневные бэкапы, сканы уязвимостей.
+</p>
+    </div>
+
+    <!-- 4. AI-Analytics -->
+    <div class="card">
+      <h3 data-i18n="srvAnalytics">AI-Аналитика</h3>
+      <p data-i18n="srvAnalyticsDesc">Сбор и анализ данных, предиктивная аналитика.</p>
+      <p class="more" data-i18n="srvAnalyticsHint">
+  Data-lake, ML-дашборды, прогноз спроса и цен.<br>
+  Для: ритейла, производства, HR-аналитики.<br>
+  Выгода: Live-отчёты, KPI-алерты, визуализация трендов.
+</p>
+    </div>
+  </div>
+</section>
+
+  <section class="portfolio" data-aos="fade-up" data-aos-duration="400">
+  <h2 data-i18n="portfolioTitle">Портфолио</h2>
+  <style>
+    .portfolio h2 {
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
+  text-align: center;
+}
+
+  </style>
+</section>
+  <!-- 🔥 Portfolio block: AI ChatBot (Telegram, служба доставки) -->
+<section class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+  <style>
+    .portfolio-header{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem}
+    .badge{background:rgba(0,0,0,.08);padding:.25rem .8rem;border-radius:9999px;font-size:.85rem;line-height:1.6}
+    .kpi{font-weight:600;background:linear-gradient(90deg,#d16ba5 0%,#a855f7 50%,#5b5cf3 100%);background-size:200% 100%;
+         -webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradientShift 6s ease-in-out infinite}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start}
+    ol{margin:0;padding-left:1.4rem} ol li+li{margin-top:.45rem}
+    .portfolio-images{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+    .portfolio-images img{width:calc(50% - .5rem);border-radius:8px;object-fit:cover}
+    @media(max-width:640px){.portfolio-images img{width:100%}}
+    @media (max-width: 768px) {
+    .grid {
+      grid-template-columns: 1fr !important;
+    }
+  }
+  .result-box {
+  margin-top: 0.35rem; /* Поднимает блок чуть выше — на уровень "Цель" */
+}
+  </style>
+
+  <div class="portfolio-content">
+    <!-- Заголовок и бейджи -->
+    <header class="portfolio-header" style="margin-bottom: .8rem;">
+      <h3 style="margin:0;font-size:2rem" data-i18n="chatbotTitle">AI ChatBot</h3>
+      <span class="badge">–70&nbsp;% Resp Time</span>
+      <span class="badge">+40&nbsp;% CSAT</span>
+    </header>
+
+    <!-- Подзаголовок -->
+    <p style="margin:.2rem 0 1rem;font-size:1.05rem;color:#ccc" data-i18n="chatbotDesc">
+      Интеллектуальный бот Telegram 24/7 с NLP-анализом запросов и подключением к CRM.
+    </p>
+
+    <!-- Метаданные -->
+    <ul style="list-style:none;padding:0;display:flex;gap:1.5rem;margin-bottom:1.5rem;color:#aaa;font-size:.95rem">
+      <li><strong data-i18n="clientLabel">Клиент:</strong> <span data-i18n="chatbotClient">служба доставки</span></li>
+      <li><strong data-i18n="durationLabel">Срок:</strong> <span data-i18n="chatbotDur">14 дней</span></li>
+    </ul>
+
+    <!-- Основной контент: Цель + Шаги слева, Результат справа -->
+    <div class="grid">
+      <!-- Левая часть -->
+      <div>
+        <!-- Цель -->
+        <h4 class="goal-heading" style="margin-bottom: .4rem;">
+          <span class="heading-text" data-i18n="goalLabel">Цель</span>
+        </h4>
+        <p style="margin:0 0 1.2rem;color:#ccc" data-i18n="chatbotGoal">
+          Автоматизировать до 80 % повторяющихся запросов, сократить время ответа операторов и повысить удовлетворённость клиентов.
+        </p>
+
+        <!-- Ключевые шаги -->
+        <h4 class="steps-heading" style="margin-bottom:.5rem">
+          <span class="heading-text" data-i18n="stepsLabel">Ключевые&nbsp;шаги</span>
+        </h4>
+        <ol style="color:#bbb;font-size:.95rem">
+          <li data-i18n="cbStep1"><strong>Сбор FAQ-датасета</strong> и кластеризация intents.</li>
+          <li data-i18n="cbStep2"><strong>Fine-tuning BERT</strong> на русскоязычном корпусе.</li>
+          <li data-i18n="cbStep3"><strong>Entity extraction</strong> (трек-номера, адреса).</li>
+          <li data-i18n="cbStep4"><strong>Интеграция</strong> с CRM и API доставки.</li>
+          <li data-i18n="cbStep5"><strong>Fallback</strong> на оператора &lt; 10 % диалогов.</li>
+          <li data-i18n="cbStep6"><strong>Dashboard</strong> real-time аналитики (Grafana).</li>
+        </ol>
+      </div>
+
+      <!-- Правая часть: результат -->
+      <div>
+        <div class="result-box">
+          <span class="kpi" data-i18n="chatbotResult">
+            Результат: <strong>–70&nbsp;%</strong> времени ответа и <strong>+40&nbsp;%</strong> CSAT
+          </span>
+
+          <ul>
+            <li data-i18n="cbPoint1">–50&nbsp;% нагрузки на службу поддержки</li>
+            <li data-i18n="cbPoint2">До&nbsp;2 000&nbsp;обращений в сутки без сбоев</li>
+          </ul>
+
+          <div class="result-more">
+            <p data-i18n="resChatbotMore1">
+              Благодаря автоматическому распознаванию intent-ов и интеграции с CRM
+              операторы перестали отвечать на рутину — освободилось 35 рабочих часов
+              в неделю.
+            </p>
+            <p data-i18n="resChatbotMore2">
+              Средняя оценка обслуживания (CSAT) выросла с 3.9 до 5.5 / 7,
+              а NPS поднялся на 12 пунктов уже через месяц.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Изображения -->
+    <div class="portfolio-images">
+      <img src="images/1.jpeg" alt="ChatBot Interface">
+      <img src="images/2.png"  alt="ChatBot Analytics">
+    </div>
+  </div>
+</section>
+
+
+ <!-- 🔥 Portfolio block: SaaS Лендинг (CRM-стартап) -->
+<section class="portfolio-item reverse" data-aos="fade-up" data-aos-delay="100">
+  <style>
+    .portfolio-header{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem}
+    .badge{background:rgba(0,0,0,.08);padding:.25rem .8rem;border-radius:9999px;font-size:.85rem;line-height:1.6}
+    .kpi{font-weight:600;background:linear-gradient(90deg,#d16ba5 0%,#a855f7 50%,#5b5cf3 100%);
+         background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+         animation:gradientShift 6s ease-in-out infinite}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start}
+    ol{margin:0;padding-left:1.4rem} ol li+li{margin-top:.45rem}
+    .portfolio-images{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+    .portfolio-images img{width:calc(50% - .5rem);border-radius:8px;object-fit:cover}
+    @media(max-width:640px){.portfolio-images img{width:100%}}
+  </style>
+
+  <div class="portfolio-content">
+    <!-- Заголовок и бейджи -->
+    <header class="portfolio-header" style="margin-bottom:.8rem;">
+      <h3 style="margin:0;font-size:2rem" data-i18n="saasTitle">SaaS<wbr> Лендинг</h3>
+      <span class="badge">+45&nbsp;% CR</span>
+      <span class="badge">−20&nbsp;% Bounce</span>
+    </header>
+
+    <!-- Подзаголовок -->
+    <p style="margin:.2rem 0 1rem;font-size:1.05rem;color:#ccc" data-i18n="saasDesc">
+      Адаптивный сайт с&nbsp;анимациями, формами лидогенерации и&nbsp;интеграцией платежей.
+    </p>
+
+    <!-- Метаданные -->
+    <ul style="list-style:none;padding:0;display:flex;gap:1.5rem;margin-bottom:1.5rem;color:#aaa;font-size:.95rem">
+      <li><strong data-i18n="clientLabel">Клиент:</strong> <span data-i18n="saasClient">стартап CRM</span></li>
+      <li><strong data-i18n="durationLabel">Срок:</strong> <span data-i18n="saasDur">20&nbsp;дней</span></li>
+    </ul>
+
+    <!-- Основной контент: Цель + Шаги слева, Результат справа -->
+    <div class="grid">
+      <!-- Левая часть -->
+      <div>
+        <!-- Цель -->
+        <h4 class="goal-heading" style="margin-bottom:.4rem;">
+          <span class="heading-text" data-i18n="goalLabel">Цель</span>
+        </h4>
+        <p style="margin:0 0 1.2rem;color:#ccc" data-i18n="saasGoal">
+          Увеличить конверсию лида, повысить вовлечённость пользователей и&nbsp;обеспечить бесшовную оплату подписки прямо на лендинге.
+        </p>
+
+        <!-- Шаги -->
+        <h4 class="steps-heading" style="margin-bottom:.5rem;">
+          <span class="heading-text" data-i18n="stepsLabel">Ключевые&nbsp;шаги</span>
+        </h4>
+        <ol style="color:#bbb;font-size:.95rem">
+          <li data-i18n="slStep1"><strong>UX-аналитика</strong> и карты кликов Hotjar.</li>
+          <li data-i18n="slStep2"><strong>Figma-прототип</strong> + mobile-first responsive.</li>
+          <li data-i18n="slStep3"><strong>GSAP / ScrollTrigger</strong> анимации.</li>
+          <li data-i18n="slStep4"><strong>Stripe Checkout</strong> и Webhooks.</li>
+          <li data-i18n="slStep5"><strong>Lighthouse-оптимизация</strong> (95+ баллов).</li>
+          <li data-i18n="slStep6"><strong>SEO &amp; A/B-тесты</strong> заголовков, CTA-кнопок.</li>
+        </ol>
+      </div>
+
+      <!-- Правая часть: результат -->
+      <div>
+        <div class="result-box">
+          <span class="kpi" data-i18n="saasResult">
+            Результат: <strong>+45&nbsp;%</strong> конверсии и <strong>+25&nbsp;%</strong> регистраций
+          </span>
+
+          <ul>
+            <li data-i18n="slPoint1">+30&nbsp;% времени на сайте</li>
+            <li data-i18n="slPoint2">−20&nbsp;% показателя отказов</li>
+            <li data-i18n="slPoint3">+15&nbsp;% среднего чека</li>
+          </ul>
+
+          <div class="result-more">
+            <p data-i18n="resSaasMore1">
+              После редизайна и GSAP-анимаций глубина просмотра выросла в 1.7 раза,
+              а скорость загрузки страниц улучшилась до 1.1 с (LCP).
+            </p>
+            <p data-i18n="resSaasMore2">
+              Интеграция Stripe Checkout позволила оформлять подписку в два клика;
+              средний чек поднялся, а время до покупки сократилось на 35 %.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Изображения -->
+    <div class="portfolio-images">
+      <img src="images/3.webp" alt="SaaS Landing">
+      <img src="images/4.png"  alt="Payment Integration">
+    </div>
+  </div>
+</section>
+
+
+ <!-- 🔥 Portfolio block: CRM Система (онлайн-магазин) -->
+<section class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+  <style>
+    .portfolio-header{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem}
+    .badge{background:rgba(0,0,0,.08);padding:.25rem .8rem;border-radius:9999px;font-size:.85rem;line-height:1.6}
+    .kpi{font-weight:600;background:linear-gradient(90deg,#d16ba5 0%,#a855f7 50%,#5b5cf3 100%);
+         background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+         animation:gradientShift 6s ease-in-out infinite}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start}
+    ol{margin:0;padding-left:1.4rem} ol li+li{margin-top:.45rem}
+    .portfolio-images{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+    .portfolio-images img{width:calc(50% - .5rem);border-radius:8px;object-fit:cover}
+    @media(max-width:640px){.portfolio-images img{width:100%}}
+    @media (max-width: 360px) {
+  .portfolio-header h3 {
+    font-size: 1.3rem;           /* адаптивно меньше */
+    word-break: break-word;     /* если вдруг не влезает — перенос */
+    padding: 0 1rem;            /* отступ от краёв */
+    text-align: center;         /* по центру, если нужно */
+  }
+}
+
+  </style>
+
+  <div class="portfolio-content">
+    <!-- Заголовок и бейджи -->
+    <header class="portfolio-header" style="margin-bottom:.8rem;">
+      <h3 style="margin:0;font-size:2rem" data-i18n="crmTitle">CRM&nbsp;Система</h3>
+      <span class="badge">+30&nbsp;% Sales&nbsp;Eff.</span>
+      <span class="badge">−15&nbsp;% Cart&nbsp;Abandon</span>
+    </header>
+
+    <!-- Подзаголовок -->
+    <p style="margin:.2rem 0 1rem;font-size:1.05rem;color:#ccc" data-i18n="crmDesc">
+      Панель управления заказами и&nbsp;клиентами с&nbsp;автоматическими уведомлениями и&nbsp;аналитикой.
+    </p>
+
+    <!-- Метаданные -->
+    <ul style="list-style:none;padding:0;display:flex;gap:1.5rem;margin-bottom:1.5rem;color:#aaa;font-size:.95rem">
+      <li><strong data-i18n="clientLabel">Клиент:</strong> <span data-i18n="crmClient">онлайн-магазин</span></li>
+      <li><strong data-i18n="durationLabel">Срок:</strong> <span data-i18n="crmDur">3 недели</span></li>
+    </ul>
+
+    <!-- Основной контент: Цель + Шаги слева, Результат справа -->
+    <div class="grid">
+      <!-- Левая часть -->
+      <div>
+        <!-- Цель -->
+        <h4 class="goal-heading" style="margin-bottom:.4rem;">
+          <span class="heading-text" data-i18n="goalLabel">Цель</span>
+        </h4>
+        <p style="margin:0 0 1.2rem;color:#ccc" data-i18n="crmGoal">
+          Повысить эффективность продаж и&nbsp;улучшить опыт клиентов за&nbsp;счёт единой CRM-панели и&nbsp;проактивных напоминаний.
+        </p>
+
+        <!-- Шаги -->
+        <h4 class="steps-heading" style="margin-bottom:.5rem;">
+          <span class="heading-text" data-i18n="stepsLabel">Ключевые&nbsp;шаги</span>
+        </h4>
+        <ol style="color:#bbb;font-size:.95rem">
+          <li data-i18n="crmStep1"><strong>Миграция данных</strong> из CMS, ERP и email-листов.</li>
+          <li data-i18n="crmStep2"><strong>Страница заказов</strong> с фильтрами, search&nbsp;+ bulk-actions.</li>
+          <li data-i18n="crmStep3"><strong>Сегментация клиентов</strong> RFM&nbsp;+ авто-тегирование.</li>
+          <li data-i18n="crmStep4"><strong>Автоматические напоминания</strong> о брошенной корзине.</li>
+          <li data-i18n="crmStep5"><strong>Интеграция чата</strong> (Telegram / WhatsApp) в карточку клиента.</li>
+          <li data-i18n="crmStep6"><strong>BI-дашборд</strong> продаж и повторных покупок (Grafana).</li>
+        </ol>
+      </div>
+
+      <!-- Правая часть: результат -->
+      <div>
+        <div class="result-box">
+          <span class="kpi" data-i18n="crmResult">
+            Результат: <strong>+30&nbsp;%</strong> эффективности продаж
+          </span>
+
+          <ul>
+            <li data-i18n="crmPoint1">+25&nbsp;% повторных покупок (авто-напоминания)</li>
+            <li data-i18n="crmPoint2">−15&nbsp;% брошенных корзин (push&nbsp;+ email)</li>
+            <li data-i18n="crmPoint3">+20&nbsp;% удовлетворённости клиентов</li>
+            <li data-i18n="crmPoint4">+10&nbsp;% операционной эффективности</li>
+          </ul>
+
+          <div class="result-more">
+            <p data-i18n="resCrmMore1">
+              Интеграция RFM-сегментации и автоматических напоминаний
+              вернула 18 % «спящих» клиентов уже в первый квартал.
+            </p>
+            <p data-i18n="resCrmMore2">
+              BI-дашборд дал руководству 100 % прозрачность воронки:
+              конверсия на этапе «checkout → paid» выросла на 12 п. п.,
+              а время обработки заказа сократилось на 28 %.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Изображения -->
+    <div class="portfolio-images">
+      <img src="images/5.jpg" alt="CRM Dashboard">
+      <img src="images/6.png" alt="CRM Analytics">
+    </div>
+  </div>
+</section>
+
+
+  <!-- 🔥 Portfolio block: Панель Администрирования (EdTech) -->
+<section class="portfolio-item reverse" data-aos="fade-up" data-aos-delay="100">
+  <style>
+    .portfolio-header{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem}
+    .badge{background:rgba(0,0,0,.08);padding:.25rem .8rem;border-radius:9999px;font-size:.85rem;line-height:1.6}
+    .kpi{font-weight:600;background:linear-gradient(90deg,#d16ba5 0%,#a855f7 50%,#5b5cf3 100%);
+         background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+         animation:gradientShift 6s ease-in-out infinite}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start}
+    ol{margin:0;padding-left:1.4rem} ol li+li{margin-top:.45rem}
+    .portfolio-images{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+    .portfolio-images img{width:calc(50% - .5rem);border-radius:8px;object-fit:cover}
+    @media(max-width:640px){.portfolio-images img{width:100%}}
+    @media (max-width: 490px) {
+  h3[data-i18n="adminTitle"] {
+    font-size: 1.1rem;          /* 🔽 немного уменьшить шрифт */
+    word-break: break-word;     /* ✅ разрешить перенос */
+    line-height: 1.3;
+  }
+}
+  </style>
+
+  <div class="portfolio-content">
+    <!-- Заголовок и бейджи -->
+    <header class="portfolio-header" style="margin-bottom:.8rem;">
+      <h3 style="margin:0;font-size:2rem" data-i18n="adminTitle">Панель&nbsp;Администрирования</h3>
+      <span class="badge">0&nbsp;Downtime</span>
+      <span class="badge">99.9&nbsp;% Uptime</span>
+    </header>
+
+    <!-- Подзаголовок -->
+    <p style="margin:.2rem 0 1rem;font-size:1.05rem;color:#ccc" data-i18n="adminDesc">
+      Центр&nbsp;управления инфраструктурой: мониторинг, бэкапы и&nbsp;безопасность на&nbsp;одном экране.
+    </p>
+
+    <!-- Метаданные -->
+    <ul style="list-style:none;padding:0;display:flex;gap:1.5rem;margin-bottom:1.5rem;color:#aaa;font-size:.95rem">
+      <li><strong data-i18n="clientLabel">Клиент:</strong> <span data-i18n="adminClient">EdTech</span></li>
+      <li><strong data-i18n="durationLabel">Срок:</strong> <span data-i18n="adminDur">1&nbsp;месяц</span></li>
+    </ul>
+
+    <!-- Основной контент -->
+    <div class="grid">
+      <!-- Левая колонка -->
+      <div>
+        <!-- Цель -->
+        <h4 class="goal-heading" style="margin-bottom:.4rem;">
+          <span class="heading-text" data-i18n="goalLabel">Цель</span>
+        </h4>
+        <p style="margin:0 0 1.2rem;color:#ccc" data-i18n="adminGoal">
+          Обеспечить непрерывную работу сервисов, автоматические бэкапы и&nbsp;проактивную безопасность.
+        </p>
+
+        <!-- Шаги -->
+        <h4 class="steps-heading" style="margin-bottom:.5rem;">
+          <span class="heading-text" data-i18n="stepsLabel">Ключевые&nbsp;шаги</span>
+        </h4>
+        <ol style="color:#bbb;font-size:.95rem">
+          <li data-i18n="adStep1"><strong>Аудит инфраструктуры</strong> и построение карты зависимостей.</li>
+          <li data-i18n="adStep2"><strong>Мониторинг</strong> Prometheus + Grafana + Alertmanager&nbsp;24/7.</li>
+          <li data-i18n="adStep3"><strong>Автобэкапы</strong> (pgBackRest + S3) и еженедельные restore-тесты.</li>
+          <li data-i18n="adStep4"><strong>DR-runbooks</strong> — время восстановления &lt; 15 мин.</li>
+          <li data-i18n="adStep5"><strong>Vulnerability scanning</strong> (OWASP, Trivy) по&nbsp;cron.</li>
+          <li data-i18n="adStep6"><strong>SSO + RBAC</strong> для администраторов и&nbsp;DevOps-команды.</li>
+        </ol>
+      </div>
+
+      <!-- Правая колонка: результат -->
+      <div>
+        <div class="result-box">
+          <span class="kpi" data-i18n="adminResult">
+            Результат: <strong>0&nbsp;минут</strong> простоев и
+            <strong>100&nbsp;%</strong> ежедневных&nbsp;бэкапов
+          </span>
+
+          <ul>
+            <li data-i18n="adPoint1">−80&nbsp;% времени восстановления после сбоев</li>
+            <li data-i18n="adPoint2">Усиленная безопасность (автоматические проверки)</li>
+            <li data-i18n="adPoint3">+99.9&nbsp;% доступности сервисов</li>
+          </ul>
+
+          <div class="result-more">
+            <p data-i18n="resAdminMore1">
+              Еженедельные restore-тесты сократили RTO&nbsp;с&nbsp;40&nbsp;минут до&nbsp;8,
+              а репликация в&nbsp;S3 обеспечивает надёжность хранения на 11 девяток.
+            </p>
+            <p data-i18n="resAdminMore2">
+              Alertmanager уведомляет DevOps-команду за&nbsp;15&nbsp;минут до критического
+              порога нагрузки — количество серьёзных инцидентов снизилось на 60&nbsp;%.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Изображения -->
+    <div class="portfolio-images">
+      <img src="images/7.jpg" alt="Server Monitoring">
+      <img src="images/8.jpg" alt="Security Dashboard">
+    </div>
+  </div>
+</section>
+
+
+
+  <!--🔥  Portfolio block: AI-интеграция в бизнес (ритейл) -->
+<section class="portfolio-item" data-aos="fade-up" data-aos-delay="100">
+  <style>
+    .portfolio-header{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem}
+    .badge{background:rgba(0,0,0,.08);padding:.25rem .8rem;border-radius:9999px;font-size:.85rem;line-height:1.6}
+    .kpi{font-weight:600;background:linear-gradient(90deg,#ff7ad9 0%,#b75cff 50%,#ff7ad9 100%);
+         background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+         animation:gradientShift 6s ease-in-out infinite}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start}
+    ol{margin:0;padding-left:1.4rem} ol li+li{margin-top:.45rem}
+  </style>
+
+  <div class="portfolio-content">
+    <!-- Заголовок и бейджи -->
+    <header class="portfolio-header" style="margin-bottom:.8rem;">
+      <h3 style="margin:0;font-size:2rem" data-i18n="aiBizTitle">AI&nbsp;Интеграция в&nbsp;Бизнес</h3>
+      <span class="badge">–20&nbsp;% OPEX</span>
+      <span class="badge">+15&nbsp;% Sales</span>
+    </header>
+
+    <!-- Подзаголовок -->
+    <p style="margin:.2rem 0 1rem;font-size:1.05rem;color:#ccc" data-i18n="aiBizDesc">
+      Комплексное внедрение ИИ-аналитики в закупки, ценообразование, маркетинг и клиентский сервис.
+    </p>
+
+    <!-- Метаданные -->
+    <ul style="list-style:none;padding:0;display:flex;gap:1.5rem;margin-bottom:1.5rem;color:#aaa;font-size:.95rem">
+      <li><strong data-i18n="clientLabel">Клиент:</strong> <span data-i18n="aiBizClient">ритейл-сеть</span></li>
+      <li><strong data-i18n="durationLabel">Срок:</strong> <span data-i18n="aiBizDur">1&nbsp;месяц</span></li>
+    </ul>
+
+    <!-- Основной контент -->
+    <div class="grid">
+      <!-- Левая колонка -->
+      <div>
+        <h4 class="goal-heading" style="margin-bottom:.4rem;">
+          <span class="heading-text" data-i18n="goalLabel">Цель</span>
+        </h4>
+        <p style="margin:0 0 1.2rem;color:#ccc" data-i18n="aiBizGoal">
+          Снизить операционные затраты и повысить выручку за счёт ИИ-аналитики во всех ключевых отделах.
+        </p>
+
+        <h4 class="steps-heading" style="margin-bottom:.5rem;">
+          <span class="heading-text" data-i18n="stepsLabel">Ключевые&nbsp;шаги</span>
+        </h4>
+        <ol style="color:#bbb;font-size:.95rem">
+          <li data-i18n="aiStep1"><strong>Аудит данных</strong> и ABC/XYZ-анализ SKU.</li>
+          <li data-i18n="aiStep2"><strong>Прогноз спроса</strong> (Gradient-Boosting + SARIMAX).</li>
+          <li data-i18n="aiStep3"><strong>Оптимизация закупок</strong> линейным программированием.</li>
+          <li data-i18n="aiStep4"><strong>Динамическое ценообразование</strong> на RL-модели.</li>
+          <li data-i18n="aiStep5"><strong>Персонализированные акции</strong> через RFM + uplift.</li>
+          <li data-i18n="aiStep6"><strong>Дашборд KPI</strong> для топ-менеджмента.</li>
+        </ol>
+      </div>
+
+      <!-- Правая колонка -->
+      <div>
+        <div class="result-box">
+          <span class="kpi" data-i18n="aiBizResult">
+            Результат: <strong>–20&nbsp;%</strong> издержек и
+            <strong>+15&nbsp;%</strong> продаж
+          </span>
+          <span data-i18n="aiBizResultTail">уже в&nbsp;первый месяц.</span>
+
+          <ul>
+            <li data-i18n="aiPoint1">−10&nbsp;% товарных запасов (точный прогноз спроса)</li>
+            <li data-i18n="aiPoint2">+12&nbsp;% маржи благодаря динамическому ценообразованию</li>
+          </ul>
+
+          <div class="result-more">
+            <p data-i18n="resAiMore1">
+              Оптимизация закупок на базе ML-прогноза спроса сократила
+              оборотный капитал на 2,3&nbsp;млн $ за квартал.
+            </p>
+            <p data-i18n="resAiMore2">
+              RL-модель ценообразования дала +4 % к средней наценке
+              без потери объёма продаж, а таргетированные акции
+              прибавили ещё +3 % к AOV.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+  <!-- 🔥 Portfolio block: Верстка Сайта (мебельный магазин) -->
+<section class="portfolio-item reverse" data-aos="fade-up" data-aos-delay="100">
+  <style>
+    .portfolio-header{display:flex;flex-wrap:wrap;align-items:center;gap:.75rem}
+    .badge{background:rgba(0,0,0,.08);padding:.25rem .8rem;border-radius:9999px;font-size:.85rem;line-height:1.6}
+    .kpi{font-weight:600;background:linear-gradient(90deg,#d16ba5 0%,#a855f7 50%,#5b5cf3 100%);
+         background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;
+         animation:gradientShift 6s ease-in-out infinite}
+    @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;align-items:start}
+    ol{margin:0;padding-left:1.4rem} ol li+li{margin-top:.45rem}
+    .portfolio-images{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.8rem}
+    .portfolio-images img{width:calc(50% - .5rem);border-radius:8px;object-fit:cover}
+    @media(max-width:640px){.portfolio-images img{width:100%}}
+  </style>
+
+  <div class="portfolio-content">
+    <!-- Заголовок и бейджи -->
+    <header class="portfolio-header" style="margin-bottom:.8rem;">
+      <h3 style="margin:0;font-size:2rem" data-i18n="manualTitle">Верстка&nbsp;Сайта</h3>
+      <span class="badge">+25&nbsp;% CR</span>
+      <span class="badge">95+ Lighthouse</span>
+    </header>
+
+    <!-- Подзаголовок -->
+    <p style="margin:.2rem 0 1rem;font-size:1.05rem;color:#ccc" data-i18n="manualDesc">
+      Ручная адаптивная HTML/CSS/JS-верстка с анимациями и интеграцией каталога.
+    </p>
+
+    <!-- Метаданные -->
+    <ul style="list-style:none;padding:0;display:flex;gap:1.5rem;margin-bottom:1.5rem;color:#aaa;font-size:.95rem">
+      <li><strong data-i18n="clientLabel">Клиент:</strong> <span data-i18n="manualClient">мебельный&nbsp;магазин</span></li>
+      <li><strong data-i18n="durationLabel">Срок:</strong> <span data-i18n="manualDur">1&nbsp;неделя</span></li>
+      <li><strong data-i18n="siteLabel">Сайт:</strong>
+        <a href="https://boho-project.ru/index.html" target="_blank" rel="noopener">boho-project.ru</a>
+      </li>
+    </ul>
+
+    <!-- Основной контент -->
+    <div class="grid">
+      <!-- Левая часть -->
+      <div>
+        <h4 class="goal-heading" style="margin-bottom:.4rem;">
+          <span class="heading-text" data-i18n="goalLabel">Цель</span>
+        </h4>
+        <p style="margin:0 0 1.2rem;color:#ccc" data-i18n="manualGoal">
+          Создать быстрый и&nbsp;эстетичный лендинг для презентации мебели, повысить конверсию в&nbsp;заявки и улучшить SEO-показатели.
+        </p>
+
+        <h4 class="steps-heading" style="margin-bottom:.5rem;">
+          <span class="heading-text" data-i18n="stepsLabel">Ключевые&nbsp;шаги</span>
+        </h4>
+        <ol style="color:#bbb;font-size:.95rem">
+          <li data-i18n="manStep1"><strong>Design → Code</strong> из Figma: pixel-perfect, mobile-first.</li>
+          <li data-i18n="manStep2"><strong>SCSS-модули</strong> + BEM-нейминг для читаемости.</li>
+          <li data-i18n="manStep3"><strong>GSAP / ScrollTrigger</strong> плавные параллакс-эффекты.</li>
+          <li data-i18n="manStep4"><strong>Lazy-loading</strong> изображений + WebP.</li>
+          <li data-i18n="manStep5"><strong>Swiper.js</strong> слайдеры каталога.</li>
+          <li data-i18n="manStep6"><strong>SEO & Schema.org</strong> + Core Web Vitals 95+</li>
+        </ol>
+      </div>
+
+      <!-- Правая часть -->
+      <div>
+        <div class="result-box">
+          <span class="kpi" data-i18n="manualResult">
+            Результат: <strong>+25&nbsp;%</strong> роста конверсии
+          </span>
+
+          <ul>
+            <li data-i18n="manPoint1">+30&nbsp;% времени на сайте</li>
+            <li data-i18n="manPoint2">−20&nbsp;% показатель отказов</li>
+            <li data-i18n="manPoint3">95+ / 100 Lighthouse performance</li>
+            <li data-i18n="manPoint4">Полностью адаптивно на&nbsp;5&nbsp;брейкпоинтах</li>
+          </ul>
+
+          <div class="result-more">
+            <p data-i18n="resManMore1">
+              Оптимизация картинок (WebP + lazy-loading) и Tree-Shaking JS
+              подняли показатель LCP до&nbsp;1.2 с и FID &le; 20 мс.
+            </p>
+            <p data-i18n="resManMore2">
+              Нативная адаптивная сетка CSS Grid / Flexbox сократила
+              время разработки на 40 %, а Core Web Vitals стабильно держатся
+              &gt; 95 баллов на всех устройствах.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Изображения -->
+    <div class="portfolio-images">
+      <img src="images/9.jpg"  alt="Manual Coding Screenshot 1">
+      <img src="images/10.jpg" alt="Manual Coding Screenshot 2">
+    </div>
+  </div>
+</section>
+
+  <!-- 🔥 отзывы (фон #161617) -->
+  <section class="testimonials" data-aos="fade-up" data-aos-duration="600">
+  <h2 data-i18n="testTitle">Отзывы</h2>
+
+  <marquee behavior="scroll" direction="left" scrollamount="3" loop>
+    <div class="testimonial-card" data-i18n="ts1">
+      "Illidan AI сделал для нас бота, и теперь поддержка отвечает мгновенно!" — Мария, eCommerce
+    </div>
+    <div class="testimonial-card" data-i18n="ts2">
+      "Верстка сайта вышла просто супер, адаптивность на высоте!" — Сергей, мебельный магазин
+    </div>
+    <div class="testimonial-card" data-i18n="ts3">
+      "Внедрение ИИ сэкономило нам кучу времени и денег." — Дмитрий, ритейл-сеть
+    </div>
+    <div class="testimonial-card" data-i18n="ts4">
+      "Благодаря автоматизации мы сократили расходы на 30%." — Ольга, логистика
+    </div>
+    <div class="testimonial-card" data-i18n="ts5">
+      "Наш лендинг начал приносить лиды уже в первые дни!" — Иван, финтех-стартап
+    </div>
+    <div class="testimonial-card" data-i18n="ts6">
+      "CRM-панель стала нашим основным инструментом продаж." — Сергей, онлайн-магазин
+    </div>
+    <div class="testimonial-card" data-i18n="ts7">
+      "Мониторинг серверов в реальном времени спас нас от падений." — Елена, SaaS-платформа
+    </div>
+    <div class="testimonial-card" data-i18n="ts8">
+      "Чат-бот увеличил конверсию на сайте на 20%." — Павел, образовательный портал
+    </div>
+    <div class="testimonial-card" data-i18n="ts9">
+      "Наша команда теперь фокусируется на развитии, а рутинные задачи бот выполняет сам." — Анастасия, маркетинговое агентство
+    </div>
+    <div class="testimonial-card" data-i18n="ts10">
+      "Панель администрирования работает без сбоев уже полгода." — Виктор, EdTech
+    </div>
+    <div class="testimonial-card" data-i18n="ts11">
+      "Интеграция платежей сработала без единого бага." — Наталья, eCommerce
+    </div>
+    <div class="testimonial-card" data-i18n="ts12">
+      "AI-аналитика помогла нам лучше понять клиентов." — Константин, ритейл
+    </div>
+    <div class="testimonial-card" data-i18n="ts13">
+      "Результаты превзошли все ожидания!" — Ирина, HR-стартап
+    </div>
+  </marquee>
+</section>
+
+  <!-- 🔥 Telegram-ассистент (фон #161617) -->
+<section class="telegram" data-aos="fade-up" data-aos-duration="600">
+  <style>
+    .telegram{
+      padding:4rem 1rem 3.5rem;
+      background:#161617;
+      color:#e1e1e8;
+    }
+
+    /* ───── заголовок с плавным переливом ───── */
+    .tg-gradient{
+      margin:0 0 2rem;
+      font-size:2.4rem;
+      text-align:center;
+      background:linear-gradient(90deg,#d16ba5 0%,#a855f7 50%,#5b5cf3 100%);
+      background-size:200% 100%;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation:tgShift 8s ease-in-out infinite alternate;
+    }
+    @keyframes tgShift{
+      0%  {background-position:0% 50%}
+      100%{background-position:100% 50%}
+    }
+
+    /* ───── колонки ───── */
+    .tg-columns{
+      justify-items:center; 
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:2rem;max-width:880px;margin:0 auto 2.5rem;
+    }
+    .tg-columns h3{
+      display:flex;align-items:center;gap:.5rem;
+      margin:.25rem 0 1rem;font-size:1.25rem;color:#fff;
+    }
+    .tg-columns h3 svg{
+  width:1.4rem;height:1.4rem;
+  stroke:currentColor;        /* контур берёт текущий цвет */
+  fill:none;                  /* заливки нет */
+  opacity:.8;flex-shrink:0;
+}
+    .tg-columns ul{margin:0;padding-left:1.3rem;line-height:1.6}
+
+    .tg-columns > div h3{
+  display:flex;
+  align-items:center;
+  justify-content:center;   /* текст + иконка по центру */
+  gap:.5rem;
+  text-align:center;
+}
+
+/* списки оставляем «обычными», маркер + текст */
+.tg-columns > div ul{
+  margin:0;
+  padding-left:1.3rem;      /* стандартный отступ маркера */
+  list-style-position:outside;
+}
+
+.tg-columns > div:first-child ul {
+  margin-left: 65px;
+}
+
+@media (max-width: 700px){
+  .tg-columns > div:first-child ul {
+    margin-left: 1.3rem;
+  }
+}
+    /* ───── прочие стили ───── */
+    .tg-center-text{text-align:center;font-size:1.05rem;margin-bottom:1.8rem;color:#c7c7d6}
+    .telegram-buttons{display:flex;justify-content:center;margin-bottom:2rem}
+    footer{font-size:.8rem;text-align:center;color:#6b6b78}
+@media (max-width: 600px) {
+  .tg-columns > div ul {
+    padding-left: 1.4rem !important;
+    margin-left: 0 !important;
+  }
+}
+
+
+  </style>
+
+  <!-- заголовок -->
+  <h2 class="tg-gradient" data-i18n="tgTitle">Telegram-ассистент</h2>
+
+  <!-- две колонки -->
+<div class="tg-columns">
+
+  <!-- Для клиентов -->
+  <div>
+    <h3>
+      <!-- иконка «user» (Feather) -->
+      <svg viewBox="0 0 24 24" width="22" height="22"
+           stroke="currentColor" stroke-width="2" fill="none"
+           stroke-linecap="round" stroke-linejoin="round"
+           style="flex-shrink:0;opacity:.8">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+        <circle cx="12" cy="7" r="4"></circle>
+      </svg>
+      <span data-i18n="tgForClients">Для клиентов</span>
+    </h3>
+
+    <ul>
+      <li data-i18n="tgC1">Выбор услуги и&nbsp;оформление заказа прямо в&nbsp;чате</li>
+      <li data-i18n="tgC2">Диалог&nbsp;24/7 без лишних переходов</li>
+    </ul>
+  </div>
+
+  <!-- Для разработчика -->
+  <div>
+    <h3>
+      <!-- иконка «settings / cog» (Feather) -->
+      <svg viewBox="0 0 24 24" width="22" height="22"
+           stroke="currentColor" stroke-width="2" fill="none"
+           stroke-linecap="round" stroke-linejoin="round"
+           style="flex-shrink:0;opacity:.8">
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83
+                 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1
+                 1.51V21a2 2 0 1 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65
+                 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65
+                 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65
+                 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1
+                 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0
+                 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51h.09a1.65
+                 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65
+                 1.65 0 0 0-.33 1.82v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1
+                 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"></path>
+      </svg>
+      <span data-i18n="tgForDev">Для разработчика</span>
+    </h3>
+
+    <ul>
+      <li data-i18n="tgD1">Запуск под ключ за&nbsp;дни</li>
+      <li data-i18n="tgD2">Гибкие сценарии и&nbsp;надежное API</li>
+    </ul>
+  </div>
+
+</div>
+
+  <!-- слоган -->
+  <div class="tg-arrow-wrap">
+  <p class="tg-center-text" data-i18n="tgSlogan">
+    Оформите заказ в Telegram за 30 секунд →
+  </p>
+  <div class="telegram-buttons">
+    <a
+  href="https://t.me/illidan_assistant_bot"
+  target="_blank"
+  class="btn-assist btn-assist--small"
+  data-i18n="heroBtn">
+  Запустить Telegram-ассистента
+</a>
+  </div>
+</div>
+
+  <!-- футер -->
+  <footer data-i18n="tgFooter">
+    © Illidan AI, 2025. Все права защищены.
+  </footer>
+</section>
+
+
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+     AOS.init({
+    duration: 400,      // анимация длится 0.3 секунды
+    easing: 'ease-in',  // более резкий вход
+    once: true          // анимация срабатывает только один раз при появлении
+  });
+
+ // Обновляем функцию, чтобы она принимала элемент, а не id
+function attachGradientToElement(el) {
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;
+    const y = (e.clientY - r.top) / r.height;
+
+    const h1 = 160 + 60 * x;  // мятный→голубой
+    const h2 = 180 + 40 * y;  // голубой→синий
+
+    el.style.setProperty('--c1', `hsl(${h1}, 80%, 60%)`);
+    el.style.setProperty('--c2', `hsl(${h2}, 80%, 60%)`);
+  });
+}
+
+// Находим все кнопки с классом btn-assist и вешаем обработчик на каждую
+document.querySelectorAll('.btn-assist').forEach(btn => {
+  attachGradientToElement(btn);
+});
+
+
+
+     /* ── 2. СЛОВАРЬ переводов ── */
+  const t = {
+  heroTitle: {
+    ru: "ILLIDAN&nbsp;AI",
+    en: "ILLIDAN&nbsp;AI"
+  },
+     heroText: {
+    ru: 'Создаю современные решения для бизнеса — ИИ, сайты, автоматизация, Telegram-боты.',
+    en: 'I build modern solutions for business — AI, websites, automation, Telegram bots.'
+  },
+  heroBtn: {
+    ru: 'Запустить Telegram-ассистента',
+    en: 'Launch Telegram Assistant'
+  },
+  /* --- SERVICES --- */
+  servicesTitle   : { ru:"Услуги",                     en:"Services" },
+  srvAI           : { ru:"Внедрение ИИ",               en:"AI Integration" },
+  srvAIDesc       : { ru:"Чат-боты, автоматизация, нейросети.",
+                      en:"Chat-bots, automation, neural networks." },
+  srvAIHint       : { ru:"  Решения: чат-боты, RPA-скрипты, рекомендательные системы.<br>Для отраслей: ритейл, финтех, логистика.<br>Выгода: автоответы 24/7, предиктивная аналитика, снижение издержек.",
+                      en:"  Solutions: chatbots, RPA scripts, recommender systems.<br>For: retail, fintech, logistics.<br>Benefit: 24/7 auto-replies, predictive analytics, lower costs." },
+
+  srvWeb          : { ru:"Веб-разработка",             en:"Web Development" },
+  srvWebDesc      : { ru:"Лендинги, CRM, UI/UX.",      en:"Landings, CRM, UI/UX." },
+  srvWebHint      : { ru:"  Респонсивные лендинги, SaaS-панели, e-commerce-платформы.<br>Для кого: стартапы, SMB, digital-агентства.<br>Плюсы: Core Web Vitals 95+, интеграция оплаты, рост ROI.",
+                      en:"  Responsive landings, SaaS dashboards, e-commerce platforms.<br>For: startups, SMBs, digital agencies.<br>Perks: 95+ Core Web Vitals, payment integration, higher ROI." },
+
+  srvAdmin        : { ru:"Администрирование",          en:"Administration" },
+  srvAdminDesc    : { ru:"Хостинг, обслуживание, безопасность.",
+                      en:"Hosting, maintenance, security." },
+  srvAdminHint    : { ru:"  DevOps, CI/CD, мониторинг 24/7, обновления без простоев.<br>Для: SaaS, маркетплейсов, EdTech-платформ.<br>Результат: 99.9 % uptime, ежедневные бэкапы, сканы уязвимостей.",
+                      en:"  DevOps, CI/CD, 24/7 monitoring, zero-downtime updates.<br>For: SaaS, marketplaces, EdTech platforms.<br>Outcome: 99.9 % uptime, daily backups, vulnerability scans." },
+
+  srvAnalytics        : { ru:"AI-Аналитика",           en:"AI Analytics" },
+  srvAnalyticsDesc    : { ru:"Сбор и анализ данных, предиктивная аналитика.",
+                          en:"Data collection & predictive analytics." },
+  srvAnalyticsHint    : { ru:"   Data-lake, ML-дашборды, прогноз спроса и цен.<br>Для: ритейла, производства, HR-аналитики.<br>Выгода: отчёты Live, KPI-алерты, визуализация трендов.",
+                          en:" Data-lakes, ML dashboards, demand & price forecasting.<br>For: retail, manufacturing, HR analytics.<br>Gain: live reports, KPI alerts, visual trend insights." },
+
+  /* --- PORTFOLIO HEADER --- */
+  portfolioTitle: {
+    ru: "Портфолио",
+    en: "Portfolio"
+  },
+  /* — Portfolio: AI ChatBot — */
+  chatbotTitle  : { ru:"AI ChatBot", en:"AI ChatBot" },
+  chatbotDesc   : { ru:"Интеллектуальный бот Telegram 24/7 с NLP-анализом запросов и подключением к CRM.",
+                    en:"24/7 Telegram bot with NLP query analysis and CRM integration." },
+  clientLabel   : { ru:"Клиент:",   en:"Client:" },
+  durationLabel : { ru:"Срок:",     en:"Duration:" },
+  chatbotClient : { ru:"служба доставки", en:"Delivery service" },
+  chatbotDur    : { ru:"14 дней",          en:"14 days" },
+
+  goalLabel     : { ru:"Цель",     en:"Goal" },
+  stepsLabel    : { ru:"Ключевые шаги", en:"Key steps" },
+  chatbotGoal   : { ru:"Автоматизировать до 80 % повторяющихся запросов, сократить время ответа операторов и повысить удовлетворённость клиентов.",
+                    en:"Automate up to 80% of repetitive queries, cut operator response time and raise customer satisfaction." },
+
+  cbStep1 : { ru:"Сбор FAQ-датасета и кластеризация intents.",
+              en:"Collect FAQ dataset and cluster intents." },
+  cbStep2 : { ru:"Fine-tuning BERT на русскоязычном корпусе.",
+              en:"Fine-tune BERT on Russian corpus." },
+  cbStep3 : { ru:"Entity extraction (трек-номера, адреса).",
+              en:"Entity extraction (tracking numbers, addresses)." },
+  cbStep4 : { ru:"Интеграция с CRM и API доставки.",
+              en:"Integration with CRM and delivery API." },
+  cbStep5 : { ru:"Fallback на оператора < 10 % диалогов.",
+              en:"Operator fallback for < 10 % dialogues." },
+  cbStep6 : { ru:"Dashboard real-time аналитики (Grafana).",
+              en:"Real-time analytics dashboard (Grafana)." },
+
+  chatbotResult : { ru:"Результат: –70 % времени ответа и +40 % CSAT",
+                    en:"Result: –70% response time and +40% CSAT" },
+  cbPoint1 : { ru:"–50 % нагрузки на службу поддержки",
+               en:"–50% support team workload" },
+  cbPoint2 : { ru:"До 2 000 обращений в сутки без сбоев",
+               en:"Up to 2,000 inquiries per day without failures" },
+  resChatbotMore1 : { ru: "Благодаря автоматическому распознаванию intent-ов и интеграции с CRM операторы перестали отвечать на рутину — освободилось 35 рабочих часов в неделю.",
+                      en: "Thanks to automatic intent detection and CRM integration, agents stopped handling routine queries — 35 work-hours saved weekly."},
+  resChatbotMore2 : {
+  ru: "Средняя оценка обслуживания (CSAT) выросла с 3.9 до 5.5 / 7, а NPS поднялся на 12 пунктов уже через месяц.",
+  en: "Average CSAT grew from 3.9 to 5.5 / 7 and NPS increased by 12 points within a month."},
+  /* — Portfolio: Saas лендинг — */
+  saasTitle   : {
+  ru: 'SaaS<wbr> Лендинг',
+  en: 'SaaS<wbr> Landing'
+},
+  saasDesc    : { ru:"Адаптивный сайт с анимациями, формами лидогенерации и интеграцией платежей.",
+                  en:"Responsive site with animations, lead-gen forms and payment integration." },
+  saasClient  : { ru:"стартап CRM",      en:"CRM startup" },
+  saasDur     : { ru:"20 дней",          en:"20 days" },
+
+  saasGoal    : { ru:"Увеличить конверсию лида, повысить вовлечённость пользователей и обеспечить бесшовную оплату подписки прямо на лендинге.",
+                  en:"Increase lead conversion, boost user engagement and enable seamless subscription payment directly on the landing page." },
+
+  slStep1 : { ru:"UX-аналитика и карты кликов Hotjar.",
+              en:"UX analytics and Hotjar click maps." },
+  slStep2 : { ru:"Figma-прототип + mobile-first responsive.",
+              en:"Figma prototype + mobile-first responsive." },
+  slStep3 : { ru:"GSAP / ScrollTrigger анимации.",
+              en:"GSAP / ScrollTrigger animations." },
+  slStep4 : { ru:"Stripe Checkout и Webhooks.",
+              en:"Stripe Checkout and Webhooks." },
+  slStep5 : { ru:"Lighthouse-оптимизация (95+ баллов).",
+              en:"Lighthouse optimisation (95+ score)." },
+  slStep6 : { ru:"SEO & A/B-тесты заголовков, CTA-кнопок.",
+              en:"SEO & A/B-testing of headlines and CTAs." },
+
+  saasResult : { ru:"Результат: +45 % конверсии и +25 % регистраций",
+                 en:"Result: +45% conversion and +25% sign-ups" },
+  slPoint1 : { ru:"+30 % времени на сайте",      en:"+30% time on site" },
+  slPoint2 : { ru:"−20 % показателя отказов",    en:"−20% bounce rate" },
+  slPoint3 : { ru:"+15 % среднего чека",         en:"+15% average order value" },
+  resSaasMore1 : { ru: "После редизайна и GSAP-анимаций глубина просмотра выросла в 1.7 раза, а скорость загрузки страниц улучшилась до 1.1 с (LCP).",
+                   en: "After redesign and GSAP animations, page depth grew 1.7× and load speed hit 1.1 s (LCP)."},
+  resSaasMore2 : { ru: "Интеграция Stripe Checkout позволила оформлять подписку в два клика; средний чек поднялся, а время до покупки сократилось на 35 %.",
+                   en: "Stripe Checkout lets users subscribe in two clicks; average order value climbed and time-to-purchase dropped by 35 %."},
+    /* — Portfolio: CRM System — */
+  crmTitle   : {ru:"CRM Система", en:"CRM System"},
+  crmDesc    : {ru:"Панель управления заказами и клиентами с автоматическими уведомлениями и аналитикой.",
+                en:"Order & customer panel with automatic notifications and analytics."},
+  crmClient  : {ru:"онлайн-магазин", en:"Online store"},
+  crmDur     : {ru:"3 недели", en:"3 weeks"},
+
+  crmGoal    : {ru:"Повысить эффективность продаж и улучшить опыт клиентов за счёт единой CRM-панели и проактивных напоминаний.",
+                en:"Boost sales efficiency and improve customer experience via a unified CRM panel and proactive reminders."},
+
+  crmStep1 : {ru:"Миграция данных из CMS, ERP и email-листов.",
+              en:"Data migration from CMS, ERP and email lists."},
+  crmStep2 : {ru:"Страница заказов с фильтрами, search + bulk-actions.",
+              en:"Orders page with filters, search & bulk-actions."},
+  crmStep3 : {ru:"Сегментация клиентов RFM + авто-тегирование.",
+              en:"Customer segmentation (RFM) with auto-tagging."},
+  crmStep4 : {ru:"Автоматические напоминания о брошенной корзине.",
+              en:"Automatic abandoned-cart reminders."},
+  crmStep5 : {ru:"Интеграция чата (Telegram / WhatsApp) в карточку клиента.",
+              en:"Chat integration (Telegram / WhatsApp) inside customer card."},
+  crmStep6 : {ru:"BI-дашборд продаж и повторных покупок (Grafana).",
+              en:"Sales & repeat-purchase BI dashboard (Grafana)."},
+
+  crmResult  : {ru:"Результат: +30 % эффективности продаж",
+                en:"Result: +30% sales efficiency"},
+  crmPoint1  : {ru:"+25 % повторных покупок (авто-напоминания)",
+                en:"+25% repeat purchases (auto reminders)"},
+  crmPoint2  : {ru:"−15 % брошенных корзин (push + email)",
+                en:"–15% cart abandonment (push + email)"},
+  crmPoint3  : {ru:"+20 % удовлетворённости клиентов",
+                en:"+20% customer satisfaction"},
+  crmPoint4  : {ru:"+10 % операционной эффективности",
+                en:"+10% operational efficiency"},
+  resCrmMore1 : { ru: "Интеграция RFM-сегментации и автоматических напоминаний вернула 18 % «спящих» клиентов уже в первый квартал.",
+                  en: "RFM segmentation and automatic reminders re-activated 18% of dormant customers in the first quarter."},
+  resCrmMore2 : { ru: "BI-дашборд дал руководству 100 % прозрачность воронки: конверсия «checkout → paid» выросла на 12 п.п., а время обработки заказа сократилось на 28 %.",
+                  en: "The BI dashboard gave managers full funnel transparency: checkout-to-paid conversion grew by 12 pp and order processing time dropped 28%."},
+  /* — Portfolio: Admin Panel — */
+  adminTitle  : {ru:"Панель Администрирования", en:"Administration Panel"},
+  adminDesc   : {ru:"Центр управления инфраструктурой: мониторинг, бэкапы и безопасность на одном экране.",
+                 en:"Infrastructure control centre: monitoring, backups and security on a single screen."},
+  adminClient : {ru:"EdTech", en:"EdTech"},
+  adminDur    : {ru:"1 месяц", en:"1 month"},
+
+  adminGoal   : {ru:"Обеспечить непрерывную работу сервисов, автоматические бэкапы и проактивную безопасность.",
+                 en:"Ensure continuous service uptime, automatic backups and proactive security."},
+
+  adStep1 : {ru:"Аудит инфраструктуры и построение карты зависимостей.",
+             en:"Infrastructure audit and dependency map."},
+  adStep2 : {ru:"Мониторинг Prometheus + Grafana + Alertmanager 24/7.",
+             en:"24/7 monitoring with Prometheus, Grafana & Alertmanager."},
+  adStep3 : {ru:"Автобэкапы (pgBackRest + S3) и еженедельные restore-тесты.",
+             en:"Auto-backups (pgBackRest + S3) with weekly restore tests."},
+  adStep4 : {ru:"DR-runbooks — время восстановления < 15 мин.",
+             en:"DR runbooks — recovery time < 15 min."},
+  adStep5 : {ru:"Vulnerability scanning (OWASP, Trivy) по cron.",
+             en:"Vulnerability scanning (OWASP, Trivy) via cron."},
+  adStep6 : {ru:"SSO + RBAC для администраторов и DevOps-команды.",
+             en:"SSO + RBAC for admins and DevOps team."},
+
+  adminResult : {ru:"Результат: 0 минут простоев и 100 % ежедневных бэкапов",
+                 en:"Result: 0 minutes downtime and 100% daily backups"},
+
+  adPoint1 : {ru:"−80 % времени восстановления после сбоев",
+              en:"–80% recovery time after failures"},
+  adPoint2 : {ru:"Усиленная безопасность (автоматические проверки)",
+              en:"Enhanced security (automatic checks)"},
+  adPoint3 : {ru:"+99.9 % доступности сервисов",
+              en:"+99.9% service availability"},
+  resAdminMore1 : { ru: "Еженедельные restore-тесты сократили RTO с 40 минут до 8, а репликация в S3 обеспечивает надёжность хранения на 11 девяток.",
+                    en: "Weekly restore tests cut RTO from 40 min to 8 min, and S3 replication delivers eleven-nine durability."},
+  resAdminMore2 : { ru: "Alertmanager уведомляет DevOps-команду за 15 минут до критического порога нагрузки — количество серьёзных инцидентов снизилось на 60 %.",
+                    en: "Alertmanager notifies the DevOps team 15 min before critical load — major incidents dropped by 60 %."},
+              /* — Portfolio: AI Business Integration — */
+  aiBizTitle   : {ru:"AI Интеграция в Бизнес", en:"AI Business Integration"},
+  aiBizDesc    : {ru:"Комплексное внедрение ИИ-аналитики в закупки, ценообразование, маркетинг и клиентский сервис.",
+                  en:"Comprehensive AI analytics rollout across purchasing, pricing, marketing and customer service."},
+  aiBizClient  : {ru:"ритейл-сеть", en:"Retail chain"},
+  aiBizDur     : {ru:"1 месяц", en:"1 month"},
+
+  aiBizGoal    : {ru:"Снизить операционные затраты и повысить выручку за счёт ИИ-аналитики во всех ключевых отделах.",
+                  en:"Reduce operating costs and increase revenue via AI analytics across all key departments."},
+
+  aiStep1 : {ru:"Аудит данных и ABC/XYZ-анализ SKU.",
+             en:"Data audit and ABC/XYZ SKU analysis."},
+  aiStep2 : {ru:"Прогноз спроса (Gradient-Boosting + SARIMAX).",
+             en:"Demand forecasting (Gradient-Boosting + SARIMAX)."},
+  aiStep3 : {ru:"Оптимизация закупок линейным программированием.",
+             en:"Purchasing optimisation with linear programming."},
+  aiStep4 : {ru:"Динамическое ценообразование на RL-модели.",
+             en:"Dynamic pricing on an RL model."},
+  aiStep5 : {ru:"Персонализированные акции через RFM + uplift.",
+             en:"Personalised promos via RFM + uplift modelling."},
+  aiStep6 : {ru:"Дашборд KPI для топ-менеджмента.",
+             en:"KPI dashboard for top management."},
+
+  aiBizResult      : {ru:"Результат: –20 % издержек и +15 % продаж",
+                      en:"Result: –20% costs and +15% sales"},
+  aiBizResultTail  : {ru:"уже в первый месяц.",
+                      en:"within the first month."},
+  aiPoint1 : {
+    ru:"−10 % товарных запасов (точный прогноз спроса)",
+    en:"−10% inventory (precise demand forecast)"},
+  aiPoint2 : {
+    ru:"+12 % маржи благодаря динамическому ценообразованию",
+    en:"+12% margin via dynamic pricing"},
+  resAiMore1 : {
+    ru:"Оптимизация закупок на базе ML-прогноза спроса сократила оборотный капитал на 2,3 млн $ за квартал.",
+    en:"ML-based demand forecasting cut working capital by $2.3 M per quarter."},
+  resAiMore2 : {
+    ru:"RL-модель ценообразования дала +4 % к средней наценке без потери объёма продаж, а таргетированные акции прибавили ещё +3 % к AOV.",
+    en:"RL pricing added +4 % average markup with no volume drop, and targeted promos brought another +3 % to AOV."},
+   /* — Portfolio: Manual Coding — */
+  manualTitle  : {ru:"Верстка Сайта", en:"Manual Site Markup"},
+  manualDesc   : {ru:"Ручная адаптивная HTML/CSS/JS-верстка с анимациями и интеграцией каталога.",
+                  en:"Hand-coded responsive HTML/CSS/JS with animations and catalogue integration."},
+  manualClient : {ru:"мебельный магазин", en:"Furniture store"},
+  manualDur    : {ru:"1 неделя", en:"1 week"},
+  siteLabel    : {ru:"Сайт:", en:"Site:"},
+
+  manualGoal   : {ru:"Создать быстрый и эстетичный лендинг для презентации мебели, повысить конверсию в заявки и улучшить SEO-показатели.",
+                  en:"Create a fast, aesthetic landing to showcase furniture, boost lead conversion and improve SEO metrics."},
+
+  manStep1 : {ru:"Design → Code из Figma: pixel-perfect, mobile-first.",
+              en:"Design → Code from Figma: pixel-perfect, mobile-first."},
+  manStep2 : {ru:"SCSS-модули + BEM-нейминг для читаемости.",
+              en:"SCSS modules + BEM naming for readability."},
+  manStep3 : {ru:"GSAP / ScrollTrigger плавные параллакс-эффекты.",
+              en:"Smooth parallax with GSAP / ScrollTrigger."},
+  manStep4 : {ru:"Lazy-loading изображений + WebP.",
+              en:"Lazy-loading images + WebP."},
+  manStep5 : {ru:"Swiper.js слайдеры каталога.",
+              en:"Swiper.js catalogue sliders."},
+  manStep6 : {ru:"SEO & Schema.org + Core Web Vitals 95+",
+              en:"SEO & Schema.org + Core Web Vitals 95+"},
+
+  manualResult : {ru:"Результат: рост конверсии на 25 %",
+                  en:"Result: 25% conversion growth"},
+  manPoint1 : {ru:"+30 % времени на сайте",             en:"+30% time on site"},
+  manPoint2 : {ru:"−20 % показатель отказов",           en:"–20% bounce rate"},
+  manPoint3 : {ru:"95+ / 100 Lighthouse performance",   en:"95+ / 100 Lighthouse performance"},
+  manPoint4 : {ru:"Полностью адаптивно на 5 брейкпоинтах",
+               en:"Fully responsive at 5 breakpoints"},
+  resManMore1 : {
+    ru: "Оптимизация картинок (WebP + lazy-loading) и Tree-Shaking JS подняли показатель LCP до 1.2 с и FID ≤ 20 мс.",
+    en: "Image optimisation (WebP + lazy-loading) and JS tree-shaking cut LCP to 1.2 s and kept FID ≤ 20 ms."},
+  resManMore2 : {
+    ru: "Нативная адаптивная сетка CSS Grid / Flexbox сократила время разработки на 40 %, а Core Web Vitals стабильно держатся > 95 баллов на всех устройствах.",
+    en: "Native CSS Grid / Flexbox layout cut development time by 40 %, while Core Web Vitals stay above 95 on every device."},
+      /* — Testimonials — */
+  testTitle : { ru:"Отзывы", en:"Testimonials" },
+
+  ts1  : { ru:`"Illidan AI сделал для нас бота, и теперь поддержка отвечает мгновенно!" — Мария, eCommerce`,
+           en:`"Illidan AI built a bot for us, now support replies instantly!" — Maria, eCommerce` },
+
+  ts2  : { ru:`"Верстка сайта вышла просто супер, адаптивность на высоте!" — Сергей, мебельный магазин`,
+           en:`"The site markup is awesome, responsiveness is top!" — Sergei, furniture store` },
+
+  ts3  : { ru:`"Внедрение ИИ сэкономило нам кучу времени и денег." — Дмитрий, ритейл-сеть`,
+           en:`"AI rollout saved us tons of time and money." — Dmitry, retail chain` },
+
+  ts4  : { ru:`"Благодаря автоматизации мы сократили расходы на 30%." — Ольга, логистика`,
+           en:`"Automation cut our costs by 30%." — Olga, logistics` },
+
+  ts5  : { ru:`"Наш лендинг начал приносить лиды уже в первые дни!" — Иван, финтех-стартап`,
+           en:`"Our landing started bringing leads within days!" — Ivan, fintech startup` },
+
+  ts6  : { ru:`"CRM-панель стала нашим основным инструментом продаж." — Сергей, онлайн-магазин`,
+           en:`"The CRM panel became our main sales tool." — Sergei, online shop` },
+
+  ts7  : { ru:`"Мониторинг серверов в реальном времени спас нас от падений." — Елена, SaaS-платформа`,
+           en:`"Real-time server monitoring saved us from outages." — Elena, SaaS platform` },
+
+  ts8  : { ru:`"Чат-бот увеличил конверсию на сайте на 20%." — Павел, образовательный портал`,
+           en:`"Chat-bot boosted our site conversion by 20%." — Pavel, education portal` },
+
+  ts9  : { ru:`"Наша команда теперь фокусируется на развитии, а рутинные задачи бот выполняет сам." — Анастасия, маркетинговое агентство`,
+           en:`"Our team now focuses on growth while the bot handles routine tasks." — Anastasia, marketing agency` },
+
+  ts10 : { ru:`"Панель администрирования работает без сбоев уже полгода." — Виктор, EdTech`,
+           en:`"Admin panel has run flawlessly for half a year." — Viktor, EdTech` },
+
+  ts11 : { ru:`"Интеграция платежей сработала без единого бага." — Наталья, eCommerce`,
+           en:`"Payment integration worked without a single bug." — Natalia, eCommerce` },
+
+  ts12 : { ru:`"AI-аналитика помогла нам лучше понять клиентов." — Константин, ритейл`,
+           en:`"AI analytics helped us understand customers better." — Konstantin, retail` },
+
+  ts13 : { ru:`"Результаты превзошли все ожидания!" — Ирина, HR-стартап`,
+           en:`"The results exceeded all expectations!" — Irina, HR startup` },
+           /* — TG-assist — */
+     tgTitle   : {ru:"Telegram-ассистент", en:"Telegram Assistant"},
+  tgForClients:{ru:"Для клиентов",     en:"For clients"},
+  tgForDev  : {ru:"Для разработчика",  en:"For developer"},
+  tgC1      : {ru:"Выбор услуги и оформление заказа прямо в чате",
+               en:"Choose a service and order right in chat"},
+  tgC2      : {ru:"Диалог 24/7 без лишних переходов",
+               en:"24/7 dialogue with no extra redirects"},
+  tgD1      : {ru:"Запуск под ключ за дни",
+               en:"Turn-key launch in days"},
+  tgD2      : {ru:"Гибкие сценарии и надежное API",
+               en:"Flexible scenarios & reliable API"},
+  tgSlogan  : {ru: "Оформите заказ в Telegram за 30 секунд",
+               en: "Order in Telegram in 30 seconds"},
+  tgBtn     : {ru:"Запустить ассистента",
+               en:"Launch assistant"},
+  tgFooter  : {ru:"© Illidan AI, 2025. Все права защищены.",
+               en:"© Illidan AI, 2025. All rights reserved."}
+
+
+
+    /* добавляйте другие ключи сюда… */
+  };
+
+  /* ── 3. Логика переключателя ── */
+     const switcher = document.getElementById('lang-switch');
+
+  /* обычная подмена текста */
+  function applyLang(lang){
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el=>{
+      const k = el.dataset.i18n;
+      if(t[k]) el.innerHTML = t[k][lang] || t[k].ru;
+    });
+  }
+
+  /* гладкий переход RU ↔ EN */
+  function swapLanguage(target){
+    /* 1. запускаем затухание */
+    document.body.classList.add('fade-out');
+
+    /* 2. ждём окончания transition, затем меняем язык и показываем */
+    const onEnd = ()=>{
+      document.body.removeEventListener('transitionend', onEnd);
+
+      applyLang(target);                   // ← подмена текста
+
+      /* принудительно перерисовать, чтобы браузер понял, что стиль сменился */
+      void document.body.offsetWidth;
+
+      document.body.classList.remove('fade-out'); // плавное проявление
+      /* если хочется — можно добавить .fade-in, но opacity:1 уже вернётся */
+    };
+    document.body.addEventListener('transitionend', onEnd, {once:true});
+  }
+
+  /* тумблер */
+  switcher.addEventListener('change',
+    ()=> swapLanguage(switcher.checked ? 'en' : 'ru'));
+
+  /* первый показ страницы (RU) */
+  document.addEventListener('DOMContentLoaded',()=>applyLang('ru'));
+  </script>
+</body>
+</html>
