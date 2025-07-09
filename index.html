@@ -729,8 +729,7 @@ max-width: 420px;
 }
 /* Специфичный селектор, чтобы не затереть стили базового .btn-assist */
 .btn-assist.btn-assist--small {
-  /* чуть меньший шрифт */
-  font-size: 1.3rem;        
+  /* чуть меньший шрифт */       
   /* уменьшенные отступы */
   padding: 0.4rem 0.8rem;    /* 6px 12px */
   /* убираем «минимальную ширину», если она мешает */
@@ -782,6 +781,12 @@ max-width: 420px;
     min-width: 220px;
   }
 }
+    @media (max-width: 500px){
+      .btn-assist.btn-assist--small {
+  /* чуть меньший шрифт */
+  font-size: 1.3rem; 
+      }
+    }
     
   </style>
 </section>
